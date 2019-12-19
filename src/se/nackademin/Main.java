@@ -28,6 +28,9 @@ public class Main {
         seminar1.addStudentAttendance(true, student1);
         seminar1.addStudentAttendance(false, student2);
 
+        // addera seminar till program
+        programEtt.addSeminar(seminar1);
+
 
         // program en coordinator ansvarar för
         System.out.println(progCoo);
