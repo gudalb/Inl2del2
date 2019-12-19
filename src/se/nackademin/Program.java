@@ -6,7 +6,6 @@ import java.util.List;
 public class Program {
     String name;
     ProgramCoordinator programCoordinator;
-    List<Student> studentList = new ArrayList<>();
     List<Seminar> seminarList = new ArrayList<>();
 
     Program (String name) {
@@ -25,23 +24,36 @@ public class Program {
         this.programCoordinator = PC;
     }
 
-    void addStudent (Student student) {
-        studentList.add(student);
-    }
-
-    List<Student> getStudents () {
-        return studentList;
-    }
 
     int getStudentCount () {
         int count = 0;
 
-        for(Student student: studentList) {
-            count++;
+        for(Seminar seminar: seminarList) {
+            for(Attendance attendance: seminar.getAttendanceList()){
+                count++;
+            }
         }
 
         return count;
     }
+
+    public String getStudents() {
+        StringBuilder string = new StringBuilder();
+
+        string.append("Program: " + name + "\n" +
+                "Coordinator: " + programCoordinator.name + "\n" +
+                "Students: " + "\n");
+
+        for(Seminar seminar: seminarList) {
+            string.append("Seminar: " + seminar.getName() + "\n");
+            for (Attendance attendance : seminar.getAttendanceList()) {
+                string.append(attendance.student.name + "\n");
+            }
+        }
+        return string.toString();
+
+    }
+
 
     @Override
     public String toString() {
@@ -51,10 +63,12 @@ public class Program {
                         "Coordinator: " + programCoordinator.name + "\n" +
                         "Students: " + "\n");
 
-        for(Student student: studentList) {
-            string.append(student.name + "\n");
+        for(Seminar seminar: seminarList) {
+            string.append("Seminar: " + seminar.getName() + "\n");
+            for (Attendance attendance : seminar.getAttendanceList()) {
+                string.append(attendance.student.name + "\n");
+            }
         }
-
         return string.toString();
 
     }

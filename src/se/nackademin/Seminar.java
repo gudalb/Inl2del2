@@ -6,7 +6,7 @@ import java.util.List;
 public class Seminar {
     String name;
     Teacher teacher;
-    List<Student> studentList;
+    //List<Student> studentList;
     List<Attendance> attendanceList = new ArrayList<>();
     Program program;
     List<Subject> subjects = new ArrayList<>();
@@ -27,24 +27,24 @@ public class Seminar {
     }
 
     void addStudentAttendance (Boolean attended, Student student) {
+
+        for(Attendance attendance: attendanceList) {
+            if (attendance.getStudent().getName().equals(student.getName()))
+                return;
+        }
+
         Attendance tempAttendance = new Attendance(attended, this, student );
         attendanceList.add(tempAttendance);
         student.attendSeminar(this);
     }
 
-    void addStudent (Student student) {
-        studentList.add(student);
-        student.attendSeminar(this);
-    }
 
     boolean getStudentAttendance (Student student) {
         for(Attendance attendance: attendanceList) {
             if (attendance.getStudent().getName().equals(student.getName()))
                 return true;
         }
-
         return false;
-
     }
 
     String getSeminarSubjects () {

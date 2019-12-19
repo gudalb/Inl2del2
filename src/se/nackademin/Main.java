@@ -11,8 +11,10 @@ public class Main {
         ProgramCoordinator progCoo = new ProgramCoordinator("Benny", programEtt);
         Teacher teacher1 = new Teacher(progCoo, "Franz");
 
-        Student student1 = new Student("Kalle", programEtt);
-        Student student2 = new Student("Eva", programEtt);
+        Student student1 = new Student("Kalle");
+        Student student2 = new Student("Eva");
+
+
 
         Subject chemistry = new Subject("chemistry");
 
@@ -37,7 +39,7 @@ public class Main {
         System.out.println("Student count programEtt: " + programEtt.getStudentCount());
 
         // lägga till ny Student i program
-        Student student3 = new Student("Fred", programEtt);
+        Student student3 = new Student("Fred");
 
         // attendance för student
         System.out.println(student1.getAttendanceString());

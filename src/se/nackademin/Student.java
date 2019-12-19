@@ -5,14 +5,10 @@ import java.util.List;
 
 public class Student {
     String name;
-    Program program;
     List<Seminar> seminarList = new ArrayList<>();
 
-    Student (String name, Program program) {
+    Student (String name) {
         this.name = name;
-        this.program = program;
-
-        program.addStudent(this);
     }
 
     void attendSeminar (Seminar seminar) {
